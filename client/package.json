@@ -14,7 +14,7 @@
     "@babel/runtime": "^7.15.3",
     "babel-loader": "^8.2.2",
     "css-loader": "^6.2.0",
-    "html-webpack-plugin": "^5.5.0",
+    
     "mini-css-extract-plugin": "^2.6.1",
     "webpack-pwa-manifest": "^4.3.0",
     "http-server": "^0.11.1",
@@ -26,6 +26,7 @@
     "workbox-webpack-plugin": "^6.2.4"
   },
   "dependencies": {
+    "html-webpack-plugin": "^5.5.0",
     "code-mirror-themes": "^1.0.0",
     "idb": "^6.1.2"
   }
