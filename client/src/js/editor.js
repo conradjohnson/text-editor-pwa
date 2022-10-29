@@ -11,6 +11,7 @@ export default class {
       throw new Error('CodeMirror is not loaded');
     }
 
+    //set the main element to our code editor object
     this.editor = CodeMirror(document.querySelector('#main'), {
       value: '',
       mode: 'javascript',
@@ -33,12 +34,14 @@ export default class {
       textID = 1;
     }
     console.log('Text ID: '+ textID);
+
+    //get the stored document and display it to editor.
     getDb(textID).then((data) => {
       console.info('Loaded data from IndexedDB, injecting into editor');
-     // this.editor.setValue(header);
       this.editor.setValue(data || localData || header);
     });
 
+    // store the document in local storage during editing
     this.editor.on('change', () => {
       localStorage.setItem('id', 1);
       localStorage.setItem('content', this.editor.getValue());

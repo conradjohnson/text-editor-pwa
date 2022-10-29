@@ -1,6 +1,8 @@
 import { openDB } from 'idb';
 import { header } from './header';
 
+
+//setup jate-db in client IndexedDB
 const initdb = async () =>
   openDB('jate-db', 1, {
     async upgrade(db) {

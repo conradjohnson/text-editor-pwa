@@ -1,3 +1,4 @@
+// greeting for first time users
 const header = `
 /*
        _____  ____________

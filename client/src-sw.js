@@ -7,6 +7,7 @@ const { precacheAndRoute } = require('workbox-precaching/precacheAndRoute');
 
 precacheAndRoute(self.__WB_MANIFEST);
 
+// CacheFirst function instance service worker strategy
 const pageCache = new CacheFirst({
   cacheName: 'page-cache',
   plugins: [
@@ -19,11 +20,12 @@ const pageCache = new CacheFirst({
   ],
 });
 
+// set our warm Strategy cache with our CacheFirst function instance
 warmStrategyCache({
   urls: ['/index.html', '/'],
   strategy: pageCache,
 });
-
+// check page cache for incoming requests.
 registerRoute(({ request }) => request.mode === 'navigate', pageCache);
 
 // TODO: Implement asset caching

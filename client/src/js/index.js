@@ -3,9 +3,11 @@ import Editor from './editor';
 import './database';
 import '../css/style.css';
 
+//get the area that we'll be modifying
 const main = document.querySelector('#main');
 main.innerHTML = '';
 
+//spinner element for loading documents
 const loadSpinner = () => {
   const spinner = document.createElement('div');
   spinner.classList.add('spinner');
@@ -17,8 +19,10 @@ const loadSpinner = () => {
   main.appendChild(spinner);
 };
 
+// editor instance from our Editor class
 const editor = new Editor();
 
+// editor checking for CodeMirror 
 if (typeof editor === 'undefined') {
   loadSpinner();
 }
