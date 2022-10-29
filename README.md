@@ -22,7 +22,7 @@ Just Another Text Editor is a Progressive Web Application that allows a user to 
 ## Demo Screengrabs
 
 Try it out!
-[Demo Link]()
+[Demo Link](https://shrouded-taiga-40649.herokuapp.com/)
 
 Screen Shot:
 
