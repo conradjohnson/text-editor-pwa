@@ -12,14 +12,35 @@ Just Another Text Editor is a Progressive Web Application that allows a user to 
 
 
 ## Table of Contents
-
+- [Demo & Screengrabs](#demo-screengrabs)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
 - [License](#license)
 - [Questions](#questions)
 
+## Demo Screengrabs
 
+Try it out!
+[Demo Link]()
+
+Screen Shot:
+
+![Screen Shot](img/screen1.png)
+
+
+Screen Shot:
+
+![Screen Shot](img/screen3.png)
+
+
+Screen Shot:
+
+![Screen Shot](img/screen2.png)
+
+Screen Shot:
+
+![Screen Shot](img/screen4.png)
 
 ## Installation
 ***
