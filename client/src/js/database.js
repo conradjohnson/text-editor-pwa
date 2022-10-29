@@ -10,18 +10,20 @@ const initdb = async () =>
       }
       db.createObjectStore('jate', { keyPath: 'id', autoIncrement: true });
       console.log('jate database created');
-      await seedDb()
+      //await seedDb()
     },
   });
 
+
+// future seeding for multi-file functionality
 const seedDb = async()=>{
   console.log('SEED the database');
   const jateDB = await openDB('jate-db', 1);
   const tx = jateDB.transaction('jate', 'readwrite');
   const store = tx.objectStore('jate');
   const request = store.add({ id: 1, jate: header });
-  const result = await request;
-  console.log('🚀 - data saved to the database', result);
+  const response = await request;
+  console.log('🚀 - database seeded', response);
 }
 
 // TODO: Add logic to a method that accepts some content and adds it to the database
