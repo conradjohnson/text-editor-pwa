@@ -20,6 +20,8 @@ const seedDb = async()=>{
   const tx = jateDB.transaction('jate', 'readwrite');
   const store = tx.objectStore('jate');
   const request = store.add({ id: 1, jate: header });
+  const result = await request;
+  console.log('🚀 - data saved to the database', result);
 }
 
 // TODO: Add logic to a method that accepts some content and adds it to the database
