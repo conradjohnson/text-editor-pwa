@@ -1,8 +1,8 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const { InjectManifest } = require('workbox-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 // TODO: Add and configure workbox plugins for a service worker and manifest file.
 // TODO: Add CSS loaders and babel to webpack.
@@ -19,25 +19,27 @@ module.exports = () => {
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
-    
+      // Webpack plugin that generates our html file and injects our bundles. 
       new HtmlWebpackPlugin({
         template: './index.html',
-        title: 'TODOs List'
+        title: 'Just Another Text Editor - J.A.T.E.'
       }),
+      //Minify and separate css files.
       new MiniCssExtractPlugin(),
+      // Injects our custom service worker
       new InjectManifest({
         swSrc: './src-sw.js',
-        swDest: 'service-worker.js',
-      }), 
-
+        swDest: 'src-sw.js',
+      }),
+      // Creates a manifest.json file.
       new WebpackPwaManifest({
         fingerprints: false,
         inject: true,
-        name: 'Just Another Text Editor - JATE',
-        short_name: 'JATE',
-        description: 'A text editor for your code?',
-        background_color: '#7eb4e2',
-        theme_color: '#7eb4e2',
+        name: 'Just Another Text Editor - J.A.T.E.',
+        short_name: 'Jate',
+        description: 'Its a TEXT EDITOR... for your TEXT!',
+        background_color: '#225ca3',
+        theme_color: '#225ca3',
         start_url: './',
         publicPath: './',
         icons: [
@@ -48,9 +50,6 @@ module.exports = () => {
           },
         ],
       }),
-
-
-      
     ],
 
     module: {
@@ -60,16 +59,14 @@ module.exports = () => {
           use: [MiniCssExtractPlugin.loader, 'css-loader'],
         },
         {
-          test: /\.(png|svg|jpg|jpeg|gif)$/i,
-          type: 'asset/resource',
-        },
-        {
           test: /\.m?js$/,
-          exclude: /(node_modules|bower_components)/,
+          exclude: /node_modules/,
+          // We use babel-loader in order to use ES6.
           use: {
             loader: 'babel-loader',
             options: {
               presets: ['@babel/preset-env'],
+              plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime'],
             },
           },
         },

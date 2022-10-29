@@ -1,3 +1,1 @@
-## hullo!
-
-database in activity 24
+# Text Editor Starter Code

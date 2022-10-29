@@ -24,19 +24,31 @@ export default class {
 
     // When the editor is ready, set the value to whatever is stored in indexeddb.
     // Fall back to localStorage if nothing is stored in indexeddb, and if neither is available, set the value to header.
-    getDb().then((data) => {
+    
+    // future functionality for multiple files
+    let textID = localStorage.getItem('id');
+
+    // need to adjust below code for multiple files functionality
+    if (textID != 1){
+      textID = 1;
+    }
+    console.log('Text ID: '+ textID);
+    getDb(textID).then((data) => {
       console.info('Loaded data from IndexedDB, injecting into editor');
+     // this.editor.setValue(header);
       this.editor.setValue(data || localData || header);
     });
 
     this.editor.on('change', () => {
+      localStorage.setItem('id', 1);
       localStorage.setItem('content', this.editor.getValue());
     });
+
 
     // Save the content of the editor when the editor itself is loses focus
     this.editor.on('blur', () => {
       console.log('The editor has lost focus');
-      putDb(localStorage.getItem('content'));
+      putDb(localStorage.getItem('id'), localStorage.getItem('content'));
     });
   }
 }
